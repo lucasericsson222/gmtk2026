@@ -6,17 +6,32 @@ extends State
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 func _physics_process(delta: float) -> void:
 	if player:
 		if not player.is_on_floor():
-			player.velocity += player.get_gravity() * delta
+			var gravity_modifier: float = 1.25
+			if Input.is_action_pressed("ui_accept"):
+				gravity_modifier = 1.3
+			else:
+				gravity_modifier = 2.5
+			if player.velocity.y > 0:
+				gravity_modifier = 2.5
+			player.velocity += player.get_gravity() * gravity_modifier * delta
 
 		if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
 			player.velocity.y = player.JUMP_VELOCITY
-
+		elif Input.is_action_just_pressed("ui_accept") and player.is_on_wall():
+			player.velocity = player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, 1)).normalized()
+			player.velocity.x *= -2
+			print(player.velocity)
 		var direction := Input.get_axis("ui_left", "ui_right")
-		if direction:
-			player.velocity.x = direction * player.SPEED
-		else:
-			player.velocity.x = move_toward(player.velocity.x, 0, player.SPEED)
+		
+		if direction != 0.0:
+			if direction > 0.0:
+				if player.velocity.x < player.SPEED:
+					player.velocity.x += 8 * player.SPEED * delta
+			else:
+				if -player.velocity.x < player.SPEED:
+					player.velocity.x -= 8 *player.SPEED * delta
+		player.velocity.x -= 10 * delta * player.velocity.x
+		

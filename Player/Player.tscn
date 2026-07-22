@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="2_tok1r"]
 [ext_resource type="Script" uid="uid://c2inkirilnc3o" path="res://Player/StateMachine.gd" id="3_tok1r"]
 [ext_resource type="Script" uid="uid://dwrrfnb646xs4" path="res://Player/walking.gd" id="4_ddoul"]
+[ext_resource type="Texture2D" uid="uid://cracil334epm0" path="res://Player/radialgradient.png" id="5_8g4oa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y27"]
 
@@ -25,3 +26,7 @@ initial_state = NodePath("Walking")
 script = ExtResource("4_ddoul")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=787651903]
+texture = ExtResource("5_8g4oa")
+texture_scale = 4.0
