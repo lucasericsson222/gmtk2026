@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	if player:
 		if not player.is_on_floor():
 			var gravity_modifier: float = 1.25
-			if Input.is_action_pressed("ui_accept"):
+			if Input.is_action_pressed("jump"):
 				gravity_modifier = 1.3
 			else:
 				gravity_modifier = 2.5
@@ -18,13 +18,13 @@ func _physics_process(delta: float) -> void:
 				gravity_modifier = 2.5
 			player.velocity += player.get_gravity() * gravity_modifier * delta
 
-		if Input.is_action_just_pressed("ui_accept") and player.is_on_floor():
+		if Input.is_action_just_pressed("jump") and player.is_on_floor():
 			player.velocity.y = player.JUMP_VELOCITY
-		elif Input.is_action_just_pressed("ui_accept") and player.is_on_wall():
+		elif Input.is_action_just_pressed("jump") and player.is_on_wall():
 			player.velocity = player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, 1)).normalized()
 			player.velocity.x *= -2
 			print(player.velocity)
-		var direction := Input.get_axis("ui_left", "ui_right")
+		var direction := Input.get_axis("left", "right")
 		
 		if direction != 0.0:
 			if direction > 0.0:
