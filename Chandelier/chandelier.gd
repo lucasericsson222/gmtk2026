@@ -7,7 +7,6 @@ func _ready() -> void:
 	var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
 	var cast = PhysicsRayQueryParameters2D.create(Vector2(0, 0), Vector2(0, 1000), 1)
 	var result = space_state.intersect_ray(cast)
-	print(result)
 	
 
 
