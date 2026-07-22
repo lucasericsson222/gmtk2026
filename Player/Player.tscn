@@ -8,6 +8,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y27"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nirbj"]
+radius = 9.0
+height = 28.0
+
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
 
@@ -30,3 +34,10 @@ metadata/_custom_type_script = "uid://dg4xf2yytns71"
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=787651903]
 texture = ExtResource("5_8g4oa")
 texture_scale = 4.0
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=563331738]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=8102550]
+shape = SubResource("CapsuleShape2D_nirbj")
