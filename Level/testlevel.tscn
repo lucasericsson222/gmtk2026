@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://ciwrsgxk8ktg8"]
 
 [ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="1_ml02k"]
+[ext_resource type="PackedScene" uid="uid://c3fupar2gufir" path="res://Player/Player.tscn" id="2_vriv1"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ml02k"]
 polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -94,3 +95,6 @@ scale = Vector2(4.421875, 4.1875)
 color = Color(0.88791996, 0.37364274, 0, 1)
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_bee1c")
+
+[node name="Player" parent="." unique_id=106055133 instance=ExtResource("2_vriv1")]
+position = Vector2(466, 141)
