@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcix45nkkb13g" path="res://Shader/witching-hour-1x.png" id="3_l4x10"]
 [ext_resource type="PackedScene" uid="uid://tmq03x2ebac3" path="res://Chandelier/Chandelier.tscn" id="5_i2mt3"]
 [ext_resource type="PackedScene" uid="uid://dlcoetrua1upg" path="res://Camera/Camera.tscn" id="7_4aem6"]
+[ext_resource type="PackedScene" uid="uid://xjanrybc64ys" path="res://Reset/Reset.tscn" id="8_d4sk6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bee1c"]
 shader = ExtResource("1_cr7lx")
@@ -109,9 +110,6 @@ position = Vector2(967, 262)
 rotation = 1.5707964
 shadow_enabled = true
 
-[node name="Player" parent="." unique_id=106055133 instance=ExtResource("3_i2mt3")]
-position = Vector2(255, 101)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=788963684]
 
 [node name="Panel" type="Panel" parent="CanvasLayer" unique_id=4309408]
@@ -190,3 +188,13 @@ position = Vector2(400, 107)
 [node name="Camera" parent="." unique_id=1371148708 node_paths=PackedStringArray("target_scene") instance=ExtResource("7_4aem6")]
 position = Vector2(320, 182)
 target_scene = NodePath("../Player")
+
+[node name="Reset" parent="." unique_id=2139279472 node_paths=PackedStringArray("camera") instance=ExtResource("8_d4sk6")]
+position = Vector2(248, 72)
+camera = NodePath("../Camera")
+
+[node name="Chandelier22" parent="." unique_id=1753904042 instance=ExtResource("5_i2mt3")]
+position = Vector2(247, 69)
+
+[node name="Player" parent="." unique_id=106055133 instance=ExtResource("3_i2mt3")]
+position = Vector2(255, 101)

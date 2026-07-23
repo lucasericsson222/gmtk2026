@@ -10,7 +10,7 @@ func _ready() -> void:
 	current_state.process_mode = Node.PROCESS_MODE_INHERIT
 	
 	for child in get_children():
-		child.connect("transition", _transition)
+		child.connect("_transition", _transition)
 
 func _transition(new_state):
 	current_state._leave()

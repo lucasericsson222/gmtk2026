@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -400.0
 func _ready() -> void:
 	hitbox.body_entered.connect(body_entered)
 
-func body_entered(body):
+func body_entered(_body):
 	queue_free()
 
 func _physics_process(_delta: float) -> void:
