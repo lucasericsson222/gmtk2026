@@ -4,9 +4,8 @@
 radius = 1.0
 
 [node name="RopeEnd" type="StaticBody2D" unique_id=1587863737]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1965422125]
 shape = SubResource("CircleShape2D_6kir2")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="." unique_id=466183146]
-node_b = NodePath("..")

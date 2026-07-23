@@ -1,6 +1,5 @@
 [gd_scene format=4 uid="uid://ciwrsgxk8ktg8"]
 
-[ext_resource type="Shader" uid="uid://cc1vbojusnkun" path="res://Shader/light_snap.gdshader" id="1_cr7lx"]
 [ext_resource type="TileSet" uid="uid://b42hs2btoused" path="res://tileset.tres" id="2_d4sk6"]
 [ext_resource type="Shader" uid="uid://cco1socfoaoco" path="res://Shader/palette_limiter_shader.gdshader" id="2_vriv1"]
 [ext_resource type="PackedScene" uid="uid://c3fupar2gufir" path="res://Player/Player.tscn" id="3_i2mt3"]
@@ -10,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://xjanrybc64ys" path="res://Reset/Reset.tscn" id="8_d4sk6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bee1c"]
-shader = ExtResource("1_cr7lx")
-shader_parameter/pixel_size = 4.0
 
 [sub_resource type="Gradient" id="Gradient_i2mt3"]
 
@@ -127,7 +124,7 @@ position = Vector2(232, 276)
 position = Vector2(378, 192)
 
 [node name="Chandelier20" parent="." unique_id=414646103 instance=ExtResource("5_i2mt3")]
-position = Vector2(256, 185)
+position = Vector2(262, 185)
 
 [node name="Chandelier21" parent="." unique_id=276758174 instance=ExtResource("5_i2mt3")]
 position = Vector2(400, 107)
@@ -139,3 +136,6 @@ target_scene = NodePath("../Player")
 [node name="Reset" parent="." unique_id=2139279472 node_paths=PackedStringArray("camera") instance=ExtResource("8_d4sk6")]
 position = Vector2(248, 72)
 camera = NodePath("../Camera")
+
+[node name="Chandelier22" parent="." unique_id=1753904042 instance=ExtResource("5_i2mt3")]
+position = Vector2(250, 47)

@@ -53,7 +53,7 @@ texture = ExtResource("1_2urvg")
 
 [resource]
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 9
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 2
 sources/1 = SubResource("TileSetAtlasSource_4aem6")
