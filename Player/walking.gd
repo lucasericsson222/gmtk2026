@@ -2,11 +2,18 @@ extends State
 class_name WalkingState
 
 @export var player: CharacterBody2D
+@export var climb_area: Area2D
+@export var climb_timer: Timer
 const FRICTION: float = 100
 const STRONG_FRICTION: float = 2000
-# Called when the node enters the scene tree for the first time.
+var allow_climb: bool = false
+
 func _ready() -> void:
-	pass # Replace with function body.
+	climb_timer.timeout.connect(climb_timeout)
+
+func _enter() -> void:
+	climb_timer.start()
+	allow_climb = false
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -20,7 +27,7 @@ func _physics_process(delta: float) -> void:
 				gravity_modifier = 2.5
 			player.velocity += player.get_gravity() * gravity_modifier * delta
 
-		if Input.is_action_pressed("climb") and player.is_on_wall():
+		if allow_climb and Input.is_action_pressed("climb") and climb_area.has_overlapping_bodies():
 			transition.emit(ClimbingState)
 		if Input.is_action_just_pressed("jump") and player.is_on_floor():
 			player.velocity.y = player.JUMP_VELOCITY
@@ -36,4 +43,7 @@ func _physics_process(delta: float) -> void:
 			if direction != sign(player.velocity.x):
 				friction = STRONG_FRICTION
 			player.velocity.x -= sign(player.velocity.x) * min(abs(player.velocity.x), friction * delta)
-			
+
+func climb_timeout() -> void:
+	print('done')
+	allow_climb = true

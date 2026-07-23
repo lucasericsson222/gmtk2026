@@ -10,7 +10,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("reset"):
-		var instance = player_scene.instantiate()
-		instance.position = position
-		get_parent().add_child(instance)
-		camera.target_scene = instance
+		#var instance = player_scene.instantiate()
+		#instance.position = position
+		#get_parent().add_child(instance)
+		#camera.target_scene = instance
+		get_tree().reload_current_scene()

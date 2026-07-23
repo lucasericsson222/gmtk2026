@@ -39,16 +39,15 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_bee1c")
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1038745964]
-position = Vector2(0, -16)
-target_position = Vector2(0, -100)
-collision_mask = 8
-
-[node name="Line2D" type="Line2D" parent="." unique_id=501089844]
-visible = false
+[node name="Line2D" type="Line2D" parent="ChandelierRigidBody" unique_id=501089844]
 points = PackedVector2Array(0, -16)
 width = 2.0
 default_color = Color(0.101960786, 0.0627451, 0.08627451, 1)
 texture_mode = 1
 begin_cap_mode = 1
 end_cap_mode = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1038745964]
+position = Vector2(0, -16)
+target_position = Vector2(0, -400)
+collision_mask = 8

@@ -12,8 +12,12 @@ radius = 4.0
 height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nirbj"]
-radius = 9.0
-height = 28.0
+radius = 4.0
+height = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6kir2"]
+radius = 5.0
+height = 14.0
 
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
@@ -25,14 +29,17 @@ shape = SubResource("CapsuleShape2D_l7y27")
 script = ExtResource("3_tok1r")
 initial_state = NodePath("Walking")
 
-[node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player")]
+[node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player", "climb_area", "climb_timer")]
 script = ExtResource("4_ddoul")
 player = NodePath("../..")
+climb_area = NodePath("../../ClimbArea")
+climb_timer = NodePath("../../ClimbTimer")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
-[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player")]
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player", "climb_area")]
 script = ExtResource("5_vlldt")
 player = NodePath("../..")
+climb_area = NodePath("../../ClimbArea")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=787651903]
@@ -50,3 +57,15 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=8102550]
 shape = SubResource("CapsuleShape2D_nirbj")
+
+[node name="ClimbArea" type="Area2D" parent="." unique_id=1892826227]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbArea" unique_id=2072342723]
+shape = SubResource("CapsuleShape2D_6kir2")
+
+[node name="ClimbTimer" type="Timer" parent="." unique_id=434618312]
+wait_time = 0.2
+one_shot = true
+autostart = true

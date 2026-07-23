@@ -45,7 +45,7 @@ texture = SubResource("GradientTexture2D_6kir2")
 texture_scale = 12.68
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=825208779]
-color = Color(0.22310299, 0.22310287, 0.22310293, 1)
+color = Color(0.59313357, 0.5931336, 0.5931334, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1873957669]
 position = Vector2(967, 262)
@@ -136,7 +136,7 @@ position = Vector2(400, 107)
 position = Vector2(250, 47)
 
 [node name="Camera" parent="." unique_id=1371148708 node_paths=PackedStringArray("target_scene") instance=ExtResource("7_4aem6")]
-position = Vector2(320, 182)
+position = Vector2(320, 180)
 target_scene = NodePath("../Player")
 
 [node name="Reset" parent="." unique_id=2139279472 node_paths=PackedStringArray("camera") instance=ExtResource("8_d4sk6")]
@@ -152,5 +152,6 @@ tile_map_data = PackedByteArray("AAALAAAAAQAAAAAAAAALAAEAAQAAAAEAAAALAAIAAQAAAAE
 tile_set = ExtResource("2_d4sk6")
 
 [node name="FlameWall" parent="CanvasLayer2" unique_id=176862302 instance=ExtResource("8_wl2hk")]
-top_level = true
+visible = false
+z_index = 5
 position = Vector2(176, 0)
