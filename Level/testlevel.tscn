@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlcoetrua1upg" path="res://Camera/Camera.tscn" id="7_4aem6"]
 [ext_resource type="PackedScene" uid="uid://xjanrybc64ys" path="res://Reset/Reset.tscn" id="8_d4sk6"]
 [ext_resource type="PackedScene" uid="uid://57hagsllda63" path="res://Flame/FlameWall.tscn" id="8_wl2hk"]
-[ext_resource type="Texture2D" uid="uid://ovmo6d8ywql0" path="res://cloud1.png" id="9_wl2hk"]
-[ext_resource type="Texture2D" uid="uid://bahm0f07wb7d1" path="res://cloud2.png" id="10_875d2"]
+[ext_resource type="PackedScene" uid="uid://i8004efbugdv" path="res://Clouds/Clouds.tscn" id="9_wl2hk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bee1c"]
 
@@ -154,14 +153,8 @@ tile_map_data = PackedByteArray("AAALAAAAAQAAAAAAAAALAAEAAQAAAAEAAAALAAIAAQAAAAE
 tile_set = ExtResource("2_d4sk6")
 
 [node name="FlameWall" parent="CanvasLayer2" unique_id=176862302 instance=ExtResource("8_wl2hk")]
-visible = false
 z_index = 5
 position = Vector2(176, 0)
 
-[node name="Cloud1" type="Sprite2D" parent="CanvasLayer2" unique_id=664768788]
-position = Vector2(498, 84)
-texture = ExtResource("9_wl2hk")
-
-[node name="Cloud2" type="Sprite2D" parent="CanvasLayer2" unique_id=334956736]
-position = Vector2(173, 94)
-texture = ExtResource("10_875d2")
+[node name="Clouds" parent="CanvasLayer2" unique_id=198021835 instance=ExtResource("9_wl2hk")]
+z_index = 6
