@@ -2,7 +2,7 @@ extends State
 class_name ClimbingState
 
 @export var player: CharacterBody2D
-
+@export var climb_area: Area2D
 
 const CLIMB_SPEED: float = 100.0
 func _enter() -> void:
@@ -16,5 +16,5 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("jump"):
 		player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -2)).normalized()
 		transition.emit(WalkingState)
-	if not player.is_on_wall():
+	if not climb_area.has_overlapping_bodies():
 		transition.emit(WalkingState)

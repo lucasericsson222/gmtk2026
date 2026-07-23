@@ -6,10 +6,9 @@
 size = Vector2(2, 8)
 
 [node name="RopeSegment" type="RigidBody2D" unique_id=551977053]
+z_index = 1
 collision_layer = 0
 collision_mask = 0
-linear_damp = 20.421
-angular_damp = 17.075
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1769232185]
 position = Vector2(0, -4)
