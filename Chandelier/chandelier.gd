@@ -4,19 +4,6 @@ extends RigidBody2D
 @onready var rope_segment = preload("res://Chandelier/RopeSegment/RopeSegment.tscn")
 @onready var rope_end = preload("res://Chandelier/RopeSegment/RopeEnd.tscn")
 
-# Called when the node enters the scene tree for the first time.
-#func _ready() -> void:
-	#var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
-	#var query = PhysicsRayQueryParameters2D.create(global_position, global_position + Vector2(0, 1000), 1)
-	#query.exclude = [self]
-	#var result = space_state.intersect_ray(query)
-	#print(result)
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _physics_process(delta: float) -> void:
 	if ray_cast_2d:
