@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 
-const SPEED = 400.0
-const JUMP_VELOCITY = -400.0
+const ACCEL_SPEED = 1200.0
+const MAX_SPEED = 200.0
+const JUMP_VELOCITY = -250.0
 
 @onready var hitbox = $Hitbox
 
