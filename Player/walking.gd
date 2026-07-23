@@ -1,4 +1,5 @@
 extends State
+class_name WalkingState
 
 @export var player: CharacterBody2D
 
@@ -18,12 +19,13 @@ func _physics_process(delta: float) -> void:
 				gravity_modifier = 2.5
 			player.velocity += player.get_gravity() * gravity_modifier * delta
 
+		if Input.is_action_pressed("climb") and player.is_on_wall():
+			transition.emit(ClimbingState)
 		if Input.is_action_just_pressed("jump") and player.is_on_floor():
 			player.velocity.y = player.JUMP_VELOCITY
 		elif Input.is_action_just_pressed("jump") and player.is_on_wall():
 			player.velocity = player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, 1)).normalized()
 			player.velocity.x *= -2
-			print(player.velocity)
 		var direction := Input.get_axis("left", "right")
 		
 		if direction != 0.0:

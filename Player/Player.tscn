@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c2inkirilnc3o" path="res://Player/StateMachine.gd" id="3_tok1r"]
 [ext_resource type="Script" uid="uid://dwrrfnb646xs4" path="res://Player/walking.gd" id="4_ddoul"]
 [ext_resource type="Texture2D" uid="uid://cracil334epm0" path="res://Player/radialgradient.png" id="5_8g4oa"]
+[ext_resource type="Script" uid="uid://bd7kg0cv0fgh4" path="res://Player/climbing.gd" id="5_vlldt"]
 [ext_resource type="Texture2D" uid="uid://neo38mimxxgb" path="res://Player/Dracula Standing.png" id="6_6ysni"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y27"]
@@ -32,6 +33,11 @@ initial_state = NodePath("Walking")
 
 [node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player")]
 script = ExtResource("4_ddoul")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dg4xf2yytns71"
+
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player")]
+script = ExtResource("5_vlldt")
 player = NodePath("../..")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 

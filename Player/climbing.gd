@@ -1,11 +1,17 @@
 extends State
+class_name ClimbingState
+
+@export var player: CharacterBody2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+const CLIMB_SPEED: float = 100.0
+func _enter() -> void:
+	player.velocity = Vector2.ZERO
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta) -> void:
+	if Input.is_action_just_released("climb"):
+		transition.emit(WalkingState)
+	if Input.is_action_just_pressed("jump"):
+		player.velocity = player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, 1)).normalized()
+		player.velocity.x *= -2
+		transition.emit(WalkingState)
