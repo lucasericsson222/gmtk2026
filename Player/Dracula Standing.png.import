@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtgu84m3aeokl"
-path="res://.godot/imported/rope_segment.png-71cb7ee3e3be1e4fb5a6da0554779ef9.ctex"
+uid="uid://neo38mimxxgb"
+path="res://.godot/imported/Dracula Standing.png-153888d1a488b5ce0340189d181c13be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Chandelier/rope_segment.png"
-dest_files=["res://.godot/imported/rope_segment.png-71cb7ee3e3be1e4fb5a6da0554779ef9.ctex"]
+source_file="res://Player/Dracula Standing.png"
+dest_files=["res://.godot/imported/Dracula Standing.png-153888d1a488b5ce0340189d181c13be.ctex"]
 
 [params]
 

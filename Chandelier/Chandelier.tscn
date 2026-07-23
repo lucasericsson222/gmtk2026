@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dh54l61o688mq" path="res://Chandelier/chandelier.png" id="1_jhbqt"]
 [ext_resource type="Script" uid="uid://bu3nh0ff61w6c" path="res://Chandelier/chandelier.gd" id="1_viqlu"]
-[ext_resource type="Texture2D" uid="uid://dtgu84m3aeokl" path="res://Chandelier/rope_segment.png" id="3_kyqbo"]
 
 [sub_resource type="Gradient" id="Gradient_6lu7s"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -17,6 +16,7 @@ fill_to = Vector2(0.4, 0)
 size = Vector2(22, 4)
 
 [node name="Chandelier" type="RigidBody2D" unique_id=97425758]
+collision_mask = 3
 script = ExtResource("1_viqlu")
 
 [node name="Chandelier2" type="Sprite2D" parent="." unique_id=792908013]
@@ -38,7 +38,6 @@ metadata/_edit_lock_ = true
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_bee1c")
 
-[node name="RopeSegment" type="Sprite2D" parent="." unique_id=1136002710]
-position = Vector2(-1, -19)
-texture = ExtResource("3_kyqbo")
-centered = false
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1038745964]
+position = Vector2(0, -16)
+target_position = Vector2(0, -100)
