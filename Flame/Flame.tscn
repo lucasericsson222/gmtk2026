@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://cctbyj0j1mtld"]
+
+[ext_resource type="Texture2D" uid="uid://c3sw3nnwfbkeg" path="res://flame-Sheet.png" id="1_b6l05"]
+[ext_resource type="Script" uid="uid://cqxkybpp3sbv0" path="res://Flame/flame.gd" id="2_b0n4b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0n4b"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bohkq"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ormec"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe04n"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5rcl"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmml0"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gam8x"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vpyf"]
+atlas = ExtResource("1_b6l05")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h305u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0n4b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bohkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ormec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe04n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5rcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmml0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gam8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vpyf")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_b0n4b"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nirbj"]
+gradient = SubResource("Gradient_b0n4b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7, 0)
+
+[node name="Flame" type="AnimatedSprite2D" unique_id=598079219]
+sprite_frames = SubResource("SpriteFrames_h305u")
+script = ExtResource("2_b0n4b")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1590733508]
+visible = false
+texture = SubResource("GradientTexture2D_nirbj")

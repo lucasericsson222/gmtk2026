@@ -13,6 +13,7 @@ config_version=5
 config/name="gmtk2026"
 run/main_scene="uid://ciwrsgxk8ktg8"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.5388577, 0.8427747, 0.97432953, 1)
 config/icon="res://icon.svg"
 
 [display]
@@ -85,3 +86,4 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.45490196, 0.7882353, 0.61960787, 1)
