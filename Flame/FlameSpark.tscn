@@ -2,5 +2,20 @@
 
 [ext_resource type="Script" uid="uid://cmu3a42d0c31x" path="res://Flame/flame_spark.gd" id="1_i5fjb"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7y27"]
+size = Vector2(14, 14)
+
 [node name="FlameSpark" type="Node2D" unique_id=1870643158]
 script = ExtResource("1_i5fjb")
+
+[node name="Timer" type="Timer" parent="." unique_id=1755005886]
+wait_time = 0.2
+
+[node name="Area2D" type="Area2D" parent="." unique_id=820693658]
+position = Vector2(10, 10)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=176033111]
+position = Vector2(-2, -2)
+shape = SubResource("RectangleShape2D_l7y27")

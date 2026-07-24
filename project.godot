@@ -76,6 +76,13 @@ down={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player,walls,floors"
+2d_physics/layer_2="hurt"
+2d_physics/layer_4="chandaliers"
+2d_physics/layer_5="flamesparks"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

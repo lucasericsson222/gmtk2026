@@ -38,7 +38,7 @@ tile_map_data = PackedByteArray("AAAGAA8AAQAGAAMAAAAGABAAAQAFAAEAAAAGABEAAQAFAAE
 tile_set = ExtResource("2_d4sk6")
 
 [node name="FlameSpark" parent="CanvasLayer2/Parallax2D" unique_id=1870643158 node_paths=PackedStringArray("tile_map_layer", "flame_wall") instance=ExtResource("1_875d2")]
-position = Vector2(128, 336)
+position = Vector2(160, 336)
 tile_map_layer = NodePath("../TileMapLayer")
 flame_wall = NodePath("../../FlameWall")
 
