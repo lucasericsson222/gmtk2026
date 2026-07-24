@@ -13,5 +13,5 @@ func _enter() -> void:
 func _leave() -> void:
 	pass
 	
-func _transition(new_state) -> void:
+func _transition(_new_state) -> void:
 	pass
