@@ -15,6 +15,68 @@ fill_to = Vector2(0.4, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bee1c"]
 size = Vector2(22, 4)
 
+[sub_resource type="Animation" id="Animation_6lu7s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChandelierRigidBody/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChandelierRigidBody/PointLight2D2:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_viqlu"]
+resource_name = "flicker"
+length = 3.0000000000000004
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ChandelierRigidBody/PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.2, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ChandelierRigidBody/PointLight2D2:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.2, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kyqbo"]
+_data = {
+&"RESET": SubResource("Animation_6lu7s"),
+&"flicker": SubResource("Animation_viqlu")
+}
+
 [node name="Chandelier" type="Node2D" unique_id=593803899]
 script = ExtResource("1_viqlu")
 
@@ -26,12 +88,12 @@ texture = ExtResource("1_jhbqt")
 centered = false
 
 [node name="PointLight2D" type="PointLight2D" parent="ChandelierRigidBody" unique_id=1747132876]
-position = Vector2(-8, 1.1920929e-07)
+position = Vector2(-8, -7)
 texture = SubResource("GradientTexture2D_6kir2")
 metadata/_edit_lock_ = true
 
 [node name="PointLight2D2" type="PointLight2D" parent="ChandelierRigidBody" unique_id=1055472190]
-position = Vector2(8, -1.4210855e-14)
+position = Vector2(8, -7)
 texture = SubResource("GradientTexture2D_6kir2")
 metadata/_edit_lock_ = true
 
@@ -51,3 +113,7 @@ end_cap_mode = 1
 position = Vector2(0, -16)
 target_position = Vector2(0, -400)
 collision_mask = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=670244534]
+libraries/ = SubResource("AnimationLibrary_kyqbo")
+autoplay = &"flicker"

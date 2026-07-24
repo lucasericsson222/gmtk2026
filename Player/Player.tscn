@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4mv6tkhnrv54" path="res://Player/Dracula In Air Jump-Sheet.png" id="6_s1rgi"]
 [ext_resource type="Texture2D" uid="uid://bejaeu8dvcsgm" path="res://Player/Dracula Landing-Sheet.png" id="7_j23h2"]
 [ext_resource type="Texture2D" uid="uid://d5dbt8435uhn" path="res://Player/Dracula Walking-Sheet.png" id="8_0j2ni"]
+[ext_resource type="Texture2D" uid="uid://btex570ttaug5" path="res://Player/dust.png" id="10_0j2ni"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y27"]
 radius = 4.0
@@ -195,6 +196,27 @@ height = 20.0
 radius = 3.0
 height = 18.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g4v7s"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(-1, 0, 0)
+spread = 11.887
+initial_velocity_min = 18.52
+initial_velocity_max = 49.46
+orbit_velocity_min = -0.3449999
+orbit_velocity_max = -0.039999906
+gravity = Vector3(0, -100, 0)
+scale_max = 2.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0j2ni"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 25.472
+initial_velocity_max = 25.22
+gravity = Vector3(0, -10, 0)
+scale_max = 4.0
+
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
 
@@ -205,21 +227,24 @@ shape = SubResource("CapsuleShape2D_l7y27")
 script = ExtResource("3_tok1r")
 initial_state = NodePath("Walking")
 
-[node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player", "climb_area", "climb_area_col", "climb_timer", "animated_sprite")]
+[node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player", "climb_area", "climb_area_col", "climb_timer", "animated_sprite", "walking_dust", "sliding_dust")]
 script = ExtResource("4_ddoul")
 player = NodePath("../..")
 climb_area = NodePath("../../ClimbArea")
 climb_area_col = NodePath("../../ClimbArea/CollisionShape2D")
 climb_timer = NodePath("../../ClimbTimer")
 animated_sprite = NodePath("../../AnimatedSprite2D")
+walking_dust = NodePath("../../WalkingDust")
+sliding_dust = NodePath("../../SlidingDust")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
-[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player", "climb_area", "animated_sprite", "collision_shape")]
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player", "climb_area", "animated_sprite", "collision_shape", "walking_dust")]
 script = ExtResource("5_vlldt")
 player = NodePath("../..")
 climb_area = NodePath("../../ClimbArea")
 animated_sprite = NodePath("../../AnimatedSprite2D")
 collision_shape = NodePath("../../ClimbArea/CollisionShape2D")
+walking_dust = NodePath("../../WalkingDust")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=787651903]
@@ -249,3 +274,20 @@ shape = SubResource("CapsuleShape2D_6kir2")
 wait_time = 0.2
 one_shot = true
 autostart = true
+
+[node name="WalkingDust" type="GPUParticles2D" parent="." unique_id=865162580]
+z_index = -1
+position = Vector2(0, 9)
+emitting = false
+amount = 5
+texture = ExtResource("10_0j2ni")
+lifetime = 0.15000000000000002
+process_material = SubResource("ParticleProcessMaterial_g4v7s")
+
+[node name="SlidingDust" type="GPUParticles2D" parent="." unique_id=1730686732]
+z_index = -1
+emitting = false
+amount = 16
+texture = ExtResource("10_0j2ni")
+lifetime = 0.22
+process_material = SubResource("ParticleProcessMaterial_0j2ni")

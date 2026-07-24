@@ -6,6 +6,8 @@ class_name WalkingState
 @export var climb_area_col: CollisionShape2D
 @export var climb_timer: Timer
 @export var animated_sprite: AnimatedSprite2D
+@export var walking_dust: GPUParticles2D
+@export var sliding_dust: GPUParticles2D
 const FRICTION: float = 100
 const STRONG_FRICTION: float = 2000
 const WALL_FRICTION: float = 3000
@@ -34,14 +36,19 @@ func _physics_process(delta: float) -> void:
 					if player.velocity.y > MAX_WALL_FALL_SPEED:
 						player.velocity.y -= WALL_FRICTION * delta
 					gravity_modifier = 0.5
+					sliding_dust.emitting = true
 				else:
 					gravity_modifier = 2.5
+					sliding_dust.emitting = false
+			else:
+				sliding_dust.emitting = false
 			if player.velocity.y > TERMINAL_VELOCITY:
 				player.velocity.y = TERMINAL_VELOCITY
 			player.velocity += player.get_gravity() * gravity_modifier * delta
 
 		if allow_climb and Input.is_action_pressed("climb") and climb_area.has_overlapping_bodies():
 			player.move_and_collide(100 * climb_area_col.position * delta)
+			sliding_dust.emitting = false
 			transition.emit(ClimbingState)
 		if Input.is_action_just_pressed("jump") and player.is_on_floor():
 			player.velocity.y = player.JUMP_VELOCITY
@@ -51,6 +58,11 @@ func _physics_process(delta: float) -> void:
 		
 		if direction != 0:
 			climb_area_col.position.x = 4 * direction
+		
+		if player.velocity.x != 0 and player.is_on_floor():
+			walking_dust.emitting = true
+		else:
+			walking_dust.emitting = false
 		
 		if abs(player.velocity.x) < player.MAX_SPEED or direction != sign(player.velocity.x):
 			player.velocity.x += direction * player.ACCEL_SPEED * delta

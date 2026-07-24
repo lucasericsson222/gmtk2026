@@ -5,6 +5,7 @@ class_name ClimbingState
 @export var climb_area: Area2D
 @export var animated_sprite: AnimatedSprite2D
 @export var collision_shape: CollisionShape2D
+@export var walking_dust: GPUParticles2D
 
 var left_wall: bool
 const CLIMB_SPEED: float = 100.0
@@ -20,7 +21,10 @@ func _process(_delta) -> void:
 	player.velocity.y = CLIMB_SPEED * dir
 	animated_sprite.play("walking")
 	if dir == 0.0:
+		walking_dust.emitting = false
 		animated_sprite.play("stand")
+	else:
+		walking_dust.emitting = true
 	if left_wall:
 		if Input.is_action_pressed("up"):
 			animated_sprite.flip_h = true
