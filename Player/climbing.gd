@@ -17,6 +17,8 @@ func _enter() -> void:
 	player.rotate(PI / 2 if left_wall else -PI/2)
 	collision_shape.position.y += 2
 
+var climbing_release_frame_count: int = 0
+
 func _process(_delta) -> void:
 	var dir = Input.get_axis("up", "down")
 	player.velocity.y = CLIMB_SPEED * dir
@@ -43,7 +45,11 @@ func _process(_delta) -> void:
 		player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -2)).normalized()
 		transition.emit(WalkingState)
 	if not climb_area.has_overlapping_bodies():
-		transition.emit(WalkingState)
+		climbing_release_frame_count += 1
+		if climbing_release_frame_count > 10:
+			transition.emit(WalkingState)
+	else:
+		climbing_release_frame_count = 0
 
 func _leave() -> void:
 	player.rotation = 0

@@ -19,4 +19,4 @@ func _process(_delta) -> void:
 		for tile_layer in tile_layers:
 			var burn_position = global_position - tile_layer.global_position
 			var tile_at_cloud_level = tile_layer.local_to_map(burn_position)
-			tile_layer.set_cell(tile_at_cloud_level, 0)
+			tile_layer.erase_cell(tile_at_cloud_level)

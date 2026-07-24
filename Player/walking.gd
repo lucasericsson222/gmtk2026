@@ -23,6 +23,8 @@ func _ready() -> void:
 func _enter() -> void:
 	climb_timer.start()
 	allow_climb = false
+	
+var frames_since_last_on_floor = 0
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -49,6 +51,10 @@ func _physics_process(delta: float) -> void:
 
 		var direction := Input.get_axis("left", "right")
 		if player.is_on_floor():
+			frames_since_last_on_floor = 0
+		else:
+			frames_since_last_on_floor += 1
+		if player.is_on_floor():
 			if direction:
 				animation_player.play("walk")
 			else:
@@ -58,7 +64,8 @@ func _physics_process(delta: float) -> void:
 			player.move_and_collide(100 * climb_area_col.position * delta)
 			sliding_dust.emitting = false
 			transition.emit(ClimbingState)
-		if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		if Input.is_action_just_pressed("jump") and frames_since_last_on_floor < 5:
+			frames_since_last_on_floor += 200
 			player.velocity.y = player.JUMP_VELOCITY
 			#animation_player.play("start_jump")
 			animation_player.play("jump")
