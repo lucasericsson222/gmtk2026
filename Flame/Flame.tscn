@@ -76,6 +76,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7y27"]
+size = Vector2(16, 16)
+
 [node name="Flame" type="AnimatedSprite2D" unique_id=598079219]
 sprite_frames = SubResource("SpriteFrames_h305u")
 script = ExtResource("2_b0n4b")
@@ -83,3 +86,10 @@ script = ExtResource("2_b0n4b")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1590733508]
 visible = false
 texture = SubResource("GradientTexture2D_nirbj")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=932874110]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=853143369]
+shape = SubResource("RectangleShape2D_l7y27")

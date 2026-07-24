@@ -4,6 +4,8 @@ class_name ClimbingState
 @export var player: CharacterBody2D
 @export var climb_area: Area2D
 @export var animated_sprite: AnimatedSprite2D
+@export var collision_shape: CollisionShape2D
+
 var left_wall: bool
 const CLIMB_SPEED: float = 100.0
 func _enter() -> void:
@@ -11,6 +13,7 @@ func _enter() -> void:
 	animated_sprite.play("walking")
 	left_wall = animated_sprite.flip_h
 	player.rotate(PI / 2 if left_wall else -PI/2)
+	collision_shape.position.y += 2
 
 func _process(_delta) -> void:
 	var dir = Input.get_axis("up", "down")
@@ -39,3 +42,4 @@ func _process(_delta) -> void:
 
 func _leave() -> void:
 	player.rotation = 0
+	collision_shape.position.y -= 2

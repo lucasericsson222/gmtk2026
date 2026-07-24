@@ -9,6 +9,7 @@ const JUMP_VELOCITY = -250.0
 
 func _ready() -> void:
 	hitbox.body_entered.connect(body_entered)
+	hitbox.area_entered.connect(body_entered)
 
 func body_entered(_body):
 	queue_free()

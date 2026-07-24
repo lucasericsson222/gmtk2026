@@ -5,8 +5,10 @@ extends Node2D
 
 var summon_position = 8
 var number = 18
-@onready var flame_scene = preload("res://Flame/Flame.tscn")
+@onready var screen_size = get_viewport_rect().size
 
+@onready var flame_scene = preload("res://Flame/Flame.tscn")
+@export var player: CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.timeout.connect(_on_timeout)
@@ -14,7 +16,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if player:
+		if player.position.y - summon_position > screen_size.y / 2:
+			timer.wait_time = 0.05
+			print("HI")
+		else:
+			timer.wait_time = 0.3
+	else:
+		timer.wait_time = 0.05
 
 func _on_timeout() -> void:
 	for current in range(number):
