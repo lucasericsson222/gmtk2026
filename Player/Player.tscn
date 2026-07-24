@@ -217,6 +217,14 @@ initial_velocity_max = 25.22
 gravity = Vector3(0, -10, 0)
 scale_max = 4.0
 
+[sub_resource type="Animation" id="Animation_0j2ni"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v0k0e"]
+_data = {
+&"new_animation": SubResource("Animation_0j2ni")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
 
@@ -291,3 +299,6 @@ amount = 16
 texture = ExtResource("10_0j2ni")
 lifetime = 0.22
 process_material = SubResource("ParticleProcessMaterial_0j2ni")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=847630438]
+libraries/ = SubResource("AnimationLibrary_v0k0e")
