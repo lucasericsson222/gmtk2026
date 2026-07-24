@@ -6,10 +6,186 @@
 [ext_resource type="Texture2D" uid="uid://cracil334epm0" path="res://Player/radialgradient.png" id="5_8g4oa"]
 [ext_resource type="Script" uid="uid://bd7kg0cv0fgh4" path="res://Player/climbing.gd" id="5_vlldt"]
 [ext_resource type="Texture2D" uid="uid://neo38mimxxgb" path="res://Player/Dracula Standing.png" id="6_6ysni"]
+[ext_resource type="Texture2D" uid="uid://c4mv6tkhnrv54" path="res://Player/Dracula In Air Jump-Sheet.png" id="6_s1rgi"]
+[ext_resource type="Texture2D" uid="uid://bejaeu8dvcsgm" path="res://Player/Dracula Landing-Sheet.png" id="7_j23h2"]
+[ext_resource type="Texture2D" uid="uid://d5dbt8435uhn" path="res://Player/Dracula Walking-Sheet.png" id="8_0j2ni"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y27"]
 radius = 4.0
 height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0k0e"]
+atlas = ExtResource("6_s1rgi")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wa8t"]
+atlas = ExtResource("6_s1rgi")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7tob"]
+atlas = ExtResource("6_s1rgi")
+region = Rect2(0, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm7nj"]
+atlas = ExtResource("6_s1rgi")
+region = Rect2(16, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mea3"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v5gs"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sa4y"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(32, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nb2p"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(48, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7xyo"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(0, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evw08"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(16, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_roy6y"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(32, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5tep"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(48, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps8ct"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(0, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uipr"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(16, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yifbt"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(32, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0mko"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(48, 40, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqjia"]
+atlas = ExtResource("7_j23h2")
+region = Rect2(0, 60, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x70vp"]
+atlas = ExtResource("8_0j2ni")
+region = Rect2(0, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo5nf"]
+atlas = ExtResource("8_0j2ni")
+region = Rect2(16, 0, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_croik"]
+atlas = ExtResource("8_0j2ni")
+region = Rect2(0, 20, 16, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bgaaw"]
+atlas = ExtResource("8_0j2ni")
+region = Rect2(16, 20, 16, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l7y27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0k0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wa8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7tob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm7nj")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mea3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v5gs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sa4y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nb2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7xyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evw08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_roy6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5tep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps8ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uipr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yifbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0mko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqjia")
+}],
+"loop": 1,
+"name": &"landing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6ysni")
+}],
+"loop": 1,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x70vp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo5nf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_croik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bgaaw")
+}],
+"loop": 1,
+"name": &"walking",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nirbj"]
 radius = 4.0
@@ -17,7 +193,7 @@ height = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6kir2"]
 radius = 5.0
-height = 14.0
+height = 24.0
 
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
@@ -29,27 +205,28 @@ shape = SubResource("CapsuleShape2D_l7y27")
 script = ExtResource("3_tok1r")
 initial_state = NodePath("Walking")
 
-[node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player", "climb_area", "climb_timer")]
+[node name="Walking" type="Node" parent="StateMachine" unique_id=1779538576 node_paths=PackedStringArray("player", "climb_area", "climb_timer", "animated_sprite")]
 script = ExtResource("4_ddoul")
 player = NodePath("../..")
 climb_area = NodePath("../../ClimbArea")
 climb_timer = NodePath("../../ClimbTimer")
+animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
-[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player", "climb_area")]
+[node name="Climbing" type="Node" parent="StateMachine" unique_id=982581440 node_paths=PackedStringArray("player", "climb_area", "animated_sprite")]
 script = ExtResource("5_vlldt")
 player = NodePath("../..")
 climb_area = NodePath("../../ClimbArea")
+animated_sprite = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=787651903]
 texture = ExtResource("5_8g4oa")
 texture_scale = 4.0
 
-[node name="DraculaStanding" type="Sprite2D" parent="." unique_id=2128742601]
-position = Vector2(-8, -10)
-texture = ExtResource("6_6ysni")
-centered = false
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=329114543]
+sprite_frames = SubResource("SpriteFrames_l7y27")
+animation = &"stand"
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=563331738]
 collision_layer = 2

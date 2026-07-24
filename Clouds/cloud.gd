@@ -8,6 +8,6 @@ func _ready() -> void:
 	flip_h = randi_range(0,1) == 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	position += velocity
 	position.x = wrapf(position.x, 0 - 64*2, screen_size.x + 64*2)

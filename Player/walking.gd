@@ -4,12 +4,14 @@ class_name WalkingState
 @export var player: CharacterBody2D
 @export var climb_area: Area2D
 @export var climb_timer: Timer
+@export var animated_sprite: AnimatedSprite2D
 const FRICTION: float = 100
 const STRONG_FRICTION: float = 2000
 var allow_climb: bool = false
 
 func _ready() -> void:
 	climb_timer.timeout.connect(climb_timeout)
+	animated_sprite.play("walking")
 
 func _enter() -> void:
 	climb_timer.start()
@@ -38,12 +40,20 @@ func _physics_process(delta: float) -> void:
 		if abs(player.velocity.x) < player.MAX_SPEED or direction != sign(player.velocity.x):
 			player.velocity.x += direction * player.ACCEL_SPEED * delta
 		
+		if Input.is_action_pressed("left"):
+			animated_sprite.flip_h = true
+		if Input.is_action_pressed("right"):
+			animated_sprite.flip_h = false
+		
 		if player.is_on_floor():
+			animated_sprite.play("walking")
 			var friction = FRICTION
 			if direction != sign(player.velocity.x):
 				friction = STRONG_FRICTION
 			player.velocity.x -= sign(player.velocity.x) * min(abs(player.velocity.x), friction * delta)
+		if direction == 0.0:
+			animated_sprite.play("stand")
+			
 
 func climb_timeout() -> void:
-	print('done')
 	allow_climb = true

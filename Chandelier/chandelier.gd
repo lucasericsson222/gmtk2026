@@ -14,11 +14,9 @@ func connect_pin(pos: Vector2, node_a: NodePath, node_b: NodePath) -> void:
 	joint.node_b = node_b
 	add_child(joint)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if ray_cast_2d and ray_cast_2d.is_colliding():
-		var collider = ray_cast_2d.get_collider()
 		var col_point = ray_cast_2d.get_collision_point()
-		var cur_pos_offset = Vector2(0, 0)
 		var target_position = col_point - ray_cast_2d.global_position
 
 		# START LINE IMPLEMENTATION
