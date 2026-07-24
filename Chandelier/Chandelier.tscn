@@ -77,6 +77,9 @@ _data = {
 &"flicker": SubResource("Animation_viqlu")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7y27"]
+size = Vector2(20, 16)
+
 [node name="Chandelier" type="Node2D" unique_id=593803899]
 script = ExtResource("1_viqlu")
 
@@ -117,3 +120,19 @@ collision_mask = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=670244534]
 libraries/ = SubResource("AnimationLibrary_kyqbo")
 autoplay = &"flicker"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=147909292]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1245837937]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_l7y27")
+
+[node name="RopeArea" type="Area2D" parent="." unique_id=568639181]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RopeArea" unique_id=1215700717]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_l7y27")

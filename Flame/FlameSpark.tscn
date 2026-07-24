@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b6op8rncm2qpw"]
+
+[ext_resource type="Script" uid="uid://cmu3a42d0c31x" path="res://Flame/flame_spark.gd" id="1_i5fjb"]
+
+[node name="FlameSpark" type="Node2D" unique_id=1870643158]
+script = ExtResource("1_i5fjb")

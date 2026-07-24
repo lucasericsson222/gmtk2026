@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name FlameWall
 @onready var timer = $Timer
 @export var tile_layers: Array[TileMapLayer]
 
@@ -32,4 +32,3 @@ func _on_timeout() -> void:
 		flame_instance.tile_layers = tile_layers
 	summon_position = summon_position + 16
 	
-			

@@ -1,5 +1,5 @@
 extends AnimatedSprite2D
-
+class_name Flame
 @onready var col_shape = $Area2D/CollisionShape2D
 var tile_layers: Array[TileMapLayer]
 
@@ -13,5 +13,6 @@ func _process(_delta) -> void:
 	
 	if frame > 5:
 		for tile_layer in tile_layers:
-			var tile_at_cloud_level = tile_layer.local_to_map(Vector2(global_position.x, global_position.y))
+			var burn_position = global_position - tile_layer.global_position
+			var tile_at_cloud_level = tile_layer.local_to_map(burn_position)
 			tile_layer.set_cell(tile_at_cloud_level, 0)
