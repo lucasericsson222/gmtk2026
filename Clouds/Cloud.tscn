@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://ct0wuh17703nw"]
+
+[ext_resource type="Texture2D" uid="uid://ovmo6d8ywql0" path="res://Clouds/cloud1.png" id="1_4frie"]
+[ext_resource type="Texture2D" uid="uid://bahm0f07wb7d1" path="res://Clouds/cloud2.png" id="2_7myat"]
+[ext_resource type="Texture2D" uid="uid://cf7ues0ihqnqe" path="res://Clouds/cloud3.png" id="3_kmtqk"]
+[ext_resource type="Texture2D" uid="uid://cbgexbhae1kks" path="res://Clouds/cloud4.png" id="4_wn7ge"]
+[ext_resource type="Script" uid="uid://bwjk0lkab6wt2" path="res://Clouds/cloud.gd" id="5_axq3n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sqcjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4frie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7myat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_kmtqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wn7ge")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Cloud" type="AnimatedSprite2D" unique_id=626793436]
+sprite_frames = SubResource("SpriteFrames_sqcjk")
+speed_scale = 0.0
+script = ExtResource("5_axq3n")

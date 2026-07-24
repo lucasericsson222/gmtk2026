@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlcoetrua1upg" path="res://Camera/Camera.tscn" id="7_4aem6"]
 [ext_resource type="PackedScene" uid="uid://xjanrybc64ys" path="res://Reset/Reset.tscn" id="8_d4sk6"]
 [ext_resource type="PackedScene" uid="uid://57hagsllda63" path="res://Flame/FlameWall.tscn" id="8_wl2hk"]
+[ext_resource type="PackedScene" uid="uid://i8004efbugdv" path="res://Clouds/Clouds.tscn" id="9_wl2hk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bee1c"]
 
@@ -152,6 +153,8 @@ tile_map_data = PackedByteArray("AAALAAAAAQAAAAAAAAALAAEAAQAAAAEAAAALAAIAAQAAAAE
 tile_set = ExtResource("2_d4sk6")
 
 [node name="FlameWall" parent="CanvasLayer2" unique_id=176862302 instance=ExtResource("8_wl2hk")]
-visible = false
 z_index = 5
 position = Vector2(176, 0)
+
+[node name="Clouds" parent="CanvasLayer2" unique_id=198021835 instance=ExtResource("9_wl2hk")]
+z_index = 6
