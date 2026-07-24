@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dw0tw0mlfeyvo"]
+
+[ext_resource type="Script" uid="uid://cyl88obci2j3t" path="res://Flame/spark_filler.gd" id="1_h8r3l"]
+
+[node name="SparkFiller" type="Node2D" unique_id=1753878405]
+script = ExtResource("1_h8r3l")

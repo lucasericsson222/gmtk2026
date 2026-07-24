@@ -1,7 +1,7 @@
 extends Node2D
-
+class_name FlameWall
 @onready var timer = $Timer
-
+@export var tile_layers: Array[TileMapLayer]
 
 var summon_position = 8
 var number = 18
@@ -29,4 +29,6 @@ func _on_timeout() -> void:
 		var flame_instance = flame_scene.instantiate()
 		flame_instance.position = Vector2(8 + current * 16, summon_position)
 		add_child(flame_instance)
+		flame_instance.tile_layers = tile_layers
 	summon_position = summon_position + 16
+	
