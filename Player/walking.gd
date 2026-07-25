@@ -16,6 +16,7 @@ const WALL_FRICTION: float = 3000
 const MAX_WALL_FALL_SPEED: float = 100
 var TERMINAL_VELOCITY: float = 500
 var allow_climb: bool = false
+var play_glide_sfx: bool = true
 
 func _ready() -> void:
 	climb_timer.timeout.connect(climb_timeout)
@@ -29,7 +30,6 @@ var frames_since_last_on_wall = 0
 
 func _physics_process(delta: float) -> void:
 	if player:
-		handle_anim()
 		if Input.is_action_just_pressed("dash"):
 			transition.emit(DashingState)
 		if not player.is_on_floor():
@@ -72,10 +72,12 @@ func _physics_process(delta: float) -> void:
 			transition.emit(ClimbingState)
 		if Input.is_action_just_pressed("jump") and frames_since_last_on_floor < 5:
 			frames_since_last_on_floor += 200
+			AudioManager.play_sfx(AudioManager.SoundEffects.JUMP)
 			player.velocity.y = player.JUMP_VELOCITY
 		elif Input.is_action_just_pressed("jump") and frames_since_last_on_wall < 5:
 			player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -2)).normalized()
 			player.velocity.y *= 1.4
+			AudioManager.play_sfx(AudioManager.SoundEffects.WALL_JUMP)
 		
 		if direction != 0:
 			climb_area_col.position.x = 4 * direction
@@ -92,7 +94,9 @@ func _physics_process(delta: float) -> void:
 			var friction = FRICTION
 			if direction != sign(player.velocity.x):
 				friction = STRONG_FRICTION
-			player.velocity.x -= sign(player.velocity.x) * min(abs(player.velocity.x), friction * delta)			
+			player.velocity.x -= sign(player.velocity.x) * min(abs(player.velocity.x), friction * delta)
+		
+		handle_anim()
 
 func handle_anim() -> void:
 	var direction = player.velocity.x
@@ -106,13 +110,20 @@ func handle_anim() -> void:
 	else:
 		animation_tree.set("parameters/conditions/is_start_jump", false)
 	
+	animation_tree.set("parameters/conditions/sliding", sliding_dust.emitting)
+	animation_tree.set("parameters/conditions/not_sliding", !sliding_dust.emitting)
+	
 	# TODO: This is wrong
 	if player.velocity.y > 0:
 		sprite.visible = false
 		falling_sprite.visible = true
+		if play_glide_sfx and Input.is_action_pressed("jump"):
+			play_glide_sfx = false
+		play_glide_sfx = !Input.is_action_pressed("jump") and !player.is_on_wall()
 	else:
 		sprite.visible = true
 		falling_sprite.visible = false
+		play_glide_sfx = true
 
 func climb_timeout() -> void:
 	allow_climb = true
