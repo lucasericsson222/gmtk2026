@@ -17,7 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if player:
-		if player.position.y - summon_position > screen_size.y / 2:
+		if player.position.y - summon_position > screen_size.y / 2 - 60:
 			timer.wait_time = 0.05
 		else:
 			timer.wait_time = 0.3

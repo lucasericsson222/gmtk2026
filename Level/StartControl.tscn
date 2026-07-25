@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bgnog0q6du5vy"]
+
+[ext_resource type="Script" uid="uid://c5fsfhdjsrrwc" path="res://Level/start_control.gd" id="1_lwrel"]
+
+[node name="StartControl" type="Node" unique_id=550618995 node_paths=PackedStringArray("start_free_list", "player", "flame_wall")]
+script = ExtResource("1_lwrel")
+start_free_list = [NodePath("")]
+player = NodePath("")
+flame_wall = NodePath("")
