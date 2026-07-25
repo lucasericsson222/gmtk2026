@@ -16,5 +16,3 @@ func body_entered(_body):
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
-	
-	
