@@ -25,6 +25,7 @@ func _enter() -> void:
 	allow_climb = false
 	
 var frames_since_last_on_floor = 0
+var frames_since_last_on_wall = 0
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -35,7 +36,7 @@ func _physics_process(delta: float) -> void:
 			var gravity_modifier: float = 1.25
 			if Input.is_action_pressed("jump"):
 				gravity_modifier = 1.3
-				TERMINAL_VELOCITY = 50
+				#TERMINAL_VELOCITY = 50
 			else:
 				gravity_modifier = 2.5
 				TERMINAL_VELOCITY = 500
@@ -59,7 +60,12 @@ func _physics_process(delta: float) -> void:
 			frames_since_last_on_floor = 0
 		else:
 			frames_since_last_on_floor += 1
-
+		
+		if player.is_on_wall():
+			frames_since_last_on_wall = 0
+		else:
+			frames_since_last_on_wall += 1
+		
 		if allow_climb and Input.is_action_pressed("climb") and climb_area.has_overlapping_bodies():
 			player.move_and_collide(100 * climb_area_col.position * delta)
 			sliding_dust.emitting = false
@@ -67,8 +73,9 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("jump") and frames_since_last_on_floor < 5:
 			frames_since_last_on_floor += 200
 			player.velocity.y = player.JUMP_VELOCITY
-		elif Input.is_action_just_pressed("jump") and player.is_on_wall():
-			player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -1)).normalized()
+		elif Input.is_action_just_pressed("jump") and frames_since_last_on_wall < 5:
+			player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -2)).normalized()
+			player.velocity.y *= 1.4
 		
 		if direction != 0:
 			climb_area_col.position.x = 4 * direction

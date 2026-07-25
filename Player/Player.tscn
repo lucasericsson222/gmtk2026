@@ -372,6 +372,7 @@ wait_time = 0.1
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Dashing" unique_id=543499254]
 process_mode = 3
+visible = false
 z_index = 10
 amount = 30
 texture = SubResource("GradientTexture2D_l7y27")

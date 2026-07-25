@@ -37,7 +37,8 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_just_released("climb"):
 		transition.emit(WalkingState)
 	if Input.is_action_just_pressed("jump"):
-		player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -2)).normalized()
+		player.velocity = player.JUMP_VELOCITY * (-player.get_wall_normal() + Vector2(0, 2)).normalized()
+		player.velocity.y *= 1.4
 		transition.emit(WalkingState)
 	if not climb_area.has_overlapping_bodies():
 		climbing_release_frame_count += 1
