@@ -11,7 +11,12 @@ func _ready() -> void:
 	hitbox.body_entered.connect(body_entered)
 	hitbox.area_entered.connect(body_entered)
 
-func body_entered(_body):
+func body_entered(body):
+	if is_instance_of(body, TileMapLayer):
+		AudioManager.play_sfx(AudioManager.SoundEffects.SPIKE)
+	else:
+		#AudioManager.play_sfx(AudioManager.SoundEffects.FIRE_DEATH)
+		pass
 	queue_free()
 
 func _physics_process(_delta: float) -> void:
