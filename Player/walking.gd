@@ -14,7 +14,7 @@ const FRICTION: float = 100
 const STRONG_FRICTION: float = 2000
 const WALL_FRICTION: float = 3000
 const MAX_WALL_FALL_SPEED: float = 100
-const TERMINAL_VELOCITY: float = 500
+var TERMINAL_VELOCITY: float = 500
 var allow_climb: bool = false
 
 func _ready() -> void:
@@ -29,12 +29,16 @@ var frames_since_last_on_floor = 0
 func _physics_process(delta: float) -> void:
 	if player:
 		handle_anim()
+		if Input.is_action_just_pressed("dash"):
+			transition.emit(DashingState)
 		if not player.is_on_floor():
 			var gravity_modifier: float = 1.25
 			if Input.is_action_pressed("jump"):
 				gravity_modifier = 1.3
+				TERMINAL_VELOCITY = 50
 			else:
 				gravity_modifier = 2.5
+				TERMINAL_VELOCITY = 500
 			if player.velocity.y > 0:
 				if player.is_on_wall() and Input.get_axis("left", "right") == -player.get_wall_normal().x:
 					if player.velocity.y > MAX_WALL_FALL_SPEED:

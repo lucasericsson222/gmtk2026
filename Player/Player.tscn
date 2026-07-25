@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cr3cpc0028b2h" path="res://Player/player.gd" id="1_q3lat"]
 [ext_resource type="Script" uid="uid://c2inkirilnc3o" path="res://Player/StateMachine.gd" id="3_tok1r"]
 [ext_resource type="Script" uid="uid://dwrrfnb646xs4" path="res://Player/walking.gd" id="4_ddoul"]
+[ext_resource type="Script" uid="uid://bcgebxosi3obi" path="res://Player/dashing.gd" id="5_0j2ni"]
 [ext_resource type="Script" uid="uid://j0aiwmecxdt8" path="res://Player/player_animation.gd" id="5_3mea3"]
 [ext_resource type="Texture2D" uid="uid://cracil334epm0" path="res://Player/radialgradient.png" id="5_8g4oa"]
 [ext_resource type="Script" uid="uid://bd7kg0cv0fgh4" path="res://Player/climbing.gd" id="5_vlldt"]
@@ -13,6 +14,21 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l7y27"]
 radius = 4.0
 height = 20.0
+
+[sub_resource type="Gradient" id="Gradient_0j2ni"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l7y27"]
+gradient = SubResource("Gradient_0j2ni")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.49358973, 0.5277778)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_0j2ni"]
+_data = [Vector2(0, 0.9805353), 0.0, 0.0, 0, 0, Vector2(0.9977876, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nirbj"]
 radius = 4.0
@@ -71,6 +87,23 @@ tracks/1/keys = {
 "values": [Vector2i(1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_5wa8t"]
+resource_name = "dash"
+length = 0.20001000298038127
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10028535),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 6), Vector2i(1, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_0j2ni"]
 resource_name = "fall"
 length = 0.13333667362071572
@@ -109,6 +142,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_ps8ct"]
 resource_name = "land"
 length = 1.2000100178815425
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -193,6 +227,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hqjia"]
 _data = {
 &"RESET": SubResource("Animation_roy6y"),
+&"dash": SubResource("Animation_5wa8t"),
 &"fall": SubResource("Animation_0j2ni"),
 &"jump": SubResource("Animation_u5tep"),
 &"land": SubResource("Animation_ps8ct"),
@@ -287,7 +322,7 @@ states/start_jump/position = Vector2(332, 235)
 states/walk/node = SubResource("AnimationNodeAnimation_8sa4y")
 states/walk/position = Vector2(509, 74)
 transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_3nb2p"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_3mea3"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_7v5gs"), "stand", "start_jump", SubResource("AnimationNodeStateMachineTransition_d7xyo"), "walk", "start_jump", SubResource("AnimationNodeStateMachineTransition_evw08"), "start_jump", "jump", SubResource("AnimationNodeStateMachineTransition_8sa4y"), "land", "stand", SubResource("AnimationNodeStateMachineTransition_u5tep"), "jump", "start_fall", SubResource("AnimationNodeStateMachineTransition_dm7nj"), "start_fall", "fall", SubResource("AnimationNodeStateMachineTransition_roy6y"), "walk", "start_fall", SubResource("AnimationNodeStateMachineTransition_7uipr"), "fall", "stand", SubResource("AnimationNodeStateMachineTransition_ps8ct"), "jump", "stand", SubResource("AnimationNodeStateMachineTransition_j23h2")]
-graph_offset = Vector2(-86, -37)
+graph_offset = Vector2(-157.83081, 11.997916)
 
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
@@ -323,6 +358,31 @@ collision_shape = NodePath("../../ClimbArea/CollisionShape2D")
 walking_dust = NodePath("../../WalkingDust")
 metadata/_custom_type_script = "uid://dg4xf2yytns71"
 
+[node name="Dashing" type="Node" parent="StateMachine" unique_id=1667366423 node_paths=PackedStringArray("player", "animation_tree", "animation_player", "sprite", "falling_sprite")]
+script = ExtResource("5_0j2ni")
+player = NodePath("../..")
+animation_tree = NodePath("../../AnimationTree")
+animation_player = NodePath("../../AnimationPlayer")
+sprite = NodePath("../../Sprite2D")
+falling_sprite = NodePath("../../FallingSprite2D")
+metadata/_custom_type_script = "uid://dg4xf2yytns71"
+
+[node name="DashTimer" type="Timer" parent="StateMachine/Dashing" unique_id=178281752]
+wait_time = 0.1
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="StateMachine/Dashing" unique_id=543499254]
+process_mode = 3
+z_index = 10
+amount = 30
+texture = SubResource("GradientTexture2D_l7y27")
+lifetime = 0.3
+direction = Vector2(0, -1)
+spread = 14.87
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_0j2ni")
+
 [node name="PlayerAnimation" type="Node2D" parent="." unique_id=1712986697]
 script = ExtResource("5_3mea3")
 
@@ -335,7 +395,7 @@ position = Vector2(-8, -10)
 texture = ExtResource("13_dm7nj")
 centered = false
 hframes = 13
-vframes = 6
+vframes = 7
 frame = 52
 
 [node name="FallingSprite2D" type="Sprite2D" parent="." unique_id=185113330]
