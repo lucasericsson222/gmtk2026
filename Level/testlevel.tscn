@@ -36,6 +36,14 @@ start_free_list = [NodePath("../CanvasLayer2/CanvasLayer4")]
 player = NodePath("../Player")
 flame_wall = NodePath("../CanvasLayer2/FlameWall")
 
+[node name="CanvasLayer4" type="CanvasLayer" parent="." unique_id=505146174]
+layer = 3
+follow_viewport_enabled = true
+
+[node name="Clouds" parent="CanvasLayer4" unique_id=198021835 node_paths=PackedStringArray("cloud_paralax") instance=ExtResource("9_wl2hk")]
+z_index = 6
+cloud_paralax = NodePath("../../CanvasLayer3/CloudParalax")
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1657634089]
 follow_viewport_enabled = true
 
@@ -97,12 +105,6 @@ z_index = 5
 position = Vector2(176, -48)
 tile_layers = [NodePath("../../TileMapLayer"), NodePath("../../TileMapLayer2"), NodePath("../TileMapLayer3")]
 player = NodePath("../../Player")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer2" unique_id=505146174]
-
-[node name="Clouds" parent="CanvasLayer2/CanvasLayer" unique_id=198021835 node_paths=PackedStringArray("cloud_paralax") instance=ExtResource("9_wl2hk")]
-z_index = 6
-cloud_paralax = NodePath("../../../CanvasLayer3/CloudParalax")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1870546653]
 material = SubResource("ShaderMaterial_bee1c")
