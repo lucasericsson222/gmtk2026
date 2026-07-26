@@ -39,6 +39,7 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_just_pressed("jump"):
 		player.velocity = player.JUMP_VELOCITY * (-player.get_wall_normal() + Vector2(0, 2)).normalized()
 		player.velocity.y *= 1.4
+		AudioManager.play_sfx(AudioManager.SoundEffects.WALL_JUMP)
 		transition.emit(WalkingState)
 	if not climb_area.has_overlapping_bodies():
 		climbing_release_frame_count += 1
@@ -56,7 +57,6 @@ func handle_anim() -> void:
 	if direction:
 		sprite.flip_h = left_wall != (direction > 0)
 	
-	# TODO: change this to a signal
 	if Input.is_action_just_pressed("jump"):
 		animation_tree.set("parameters/conditions/is_start_jump", true)
 	else:

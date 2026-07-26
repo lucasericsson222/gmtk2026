@@ -61,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			frames_since_last_on_floor += 1
 		
-		if player.is_on_wall():
+		if climb_area.has_overlapping_bodies():
 			frames_since_last_on_wall = 0
 		else:
 			frames_since_last_on_wall += 1
@@ -104,7 +104,6 @@ func handle_anim() -> void:
 		sprite.flip_h = direction < 0
 		falling_sprite.flip_h = direction < 0
 	
-	# TODO: change this to a signal
 	if Input.is_action_just_pressed("jump"):
 		animation_tree.set("parameters/conditions/is_start_jump", true)
 	else:
@@ -113,7 +112,6 @@ func handle_anim() -> void:
 	animation_tree.set("parameters/conditions/sliding", sliding_dust.emitting)
 	animation_tree.set("parameters/conditions/not_sliding", !sliding_dust.emitting)
 	
-	# TODO: This is wrong
 	if player.velocity.y > 0:
 		sprite.visible = false
 		falling_sprite.visible = true
