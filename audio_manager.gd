@@ -12,6 +12,7 @@ enum SoundEffects {
 }
 
 enum Songs {
+	MAIN_MENU,
 	LEVEL_THEME
 }
 
@@ -25,6 +26,7 @@ const SFX_RESOURCES := {
 }
 
 const SONG_RESOURCES := {
+	Songs.MAIN_MENU: preload("res://Level/vampfyr_title_screen.mp3"),
 	Songs.LEVEL_THEME: preload("res://Level/vampfyr_final.mp3")
 }
 

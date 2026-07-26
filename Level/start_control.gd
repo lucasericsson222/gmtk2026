@@ -9,6 +9,7 @@ extends Node
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
+		AudioManager.play_song(AudioManager.Songs.LEVEL_THEME)
 		for node in start_free_list:
 			node.queue_free()
 		flame_wall.process_mode = Node.PROCESS_MODE_INHERIT

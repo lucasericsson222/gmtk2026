@@ -37,7 +37,7 @@ func _physics_process(_delta) -> void:
 	if Input.is_action_just_released("climb"):
 		transition.emit(WalkingState)
 	if Input.is_action_just_pressed("jump"):
-		player.velocity = player.JUMP_VELOCITY * (-player.get_wall_normal() + Vector2(0, 2)).normalized()
+		player.velocity = player.JUMP_VELOCITY * (-(2 * player.get_wall_normal()) + Vector2(0, 3)).normalized()
 		player.velocity.y *= 1.4
 		AudioManager.play_sfx(AudioManager.SoundEffects.WALL_JUMP)
 		transition.emit(WalkingState)

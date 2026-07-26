@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 				player.velocity.y = TERMINAL_VELOCITY
 			player.velocity += player.get_gravity() * gravity_modifier * delta
 
-		var direction := Input.get_axis("left", "right")
 		if player.is_on_floor():
 			frames_since_last_on_floor = 0
 		else:
@@ -75,10 +74,11 @@ func _physics_process(delta: float) -> void:
 			AudioManager.play_sfx(AudioManager.SoundEffects.JUMP)
 			player.velocity.y = player.JUMP_VELOCITY
 		elif Input.is_action_just_pressed("jump") and frames_since_last_on_wall < 5:
-			player.velocity = -player.JUMP_VELOCITY * (player.get_wall_normal() + Vector2(0, -2)).normalized()
+			player.velocity = -player.JUMP_VELOCITY * (3 * player.get_wall_normal() + Vector2(0, -2)).normalized()
 			player.velocity.y *= 1.4
 			AudioManager.play_sfx(AudioManager.SoundEffects.WALL_JUMP)
 		
+		var direction := Input.get_axis("left", "right")
 		if direction != 0:
 			climb_area_col.position.x = 4 * direction
 		
