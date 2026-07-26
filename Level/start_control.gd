@@ -9,6 +9,7 @@ extends Node
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
+		AudioManager.set_music_volume(-3.0)
 		AudioManager.play_song(AudioManager.Songs.LEVEL_THEME)
 		for node in start_free_list:
 			node.queue_free()
