@@ -14,7 +14,6 @@ config/name="gmtk2026"
 run/main_scene="uid://ciwrsgxk8ktg8"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0.5388577, 0.8427747, 0.97432953, 1)
-config/icon="res://icon.svg"
 
 [autoload]
 

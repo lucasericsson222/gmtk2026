@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd4kx78t856ub"
-path="res://.godot/imported/light.webp-d185d10e61df90025412493aa2dbf011.ctex"
+uid="uid://bpm2f5hodtps"
+path="res://.godot/imported/death.png-cf2d4c96e4698d246b2d718ac9a90534.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://light.webp"
-dest_files=["res://.godot/imported/light.webp-d185d10e61df90025412493aa2dbf011.ctex"]
+source_file="res://death.png"
+dest_files=["res://.godot/imported/death.png-cf2d4c96e4698d246b2d718ac9a90534.ctex"]
 
 [params]
 

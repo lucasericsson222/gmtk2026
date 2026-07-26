@@ -1,35 +1,99 @@
 [gd_scene format=3 uid="uid://dyumkvejldn48"]
 
 [ext_resource type="Script" uid="uid://qfclwh3d7wga" path="res://Coffin/coffin.gd" id="1_16r6p"]
-[ext_resource type="Texture2D" uid="uid://3enqsa1h5o8u" path="res://Coffin/coffin-Sheet.png" id="1_bjej6"]
+[ext_resource type="Texture2D" uid="uid://b2q851xi0qa50" path="res://Coffin/Coffin.png" id="1_bjej6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_16r6p"]
 atlas = ExtResource("1_bjej6")
-region = Rect2(0, 0, 32, 48)
+region = Rect2(0, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knhsb"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(48, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f32sa"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(96, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8o6o"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(144, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxj11"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(192, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnosm"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(240, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxb7k"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(288, 0, 48, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba5el"]
+atlas = ExtResource("1_bjej6")
+region = Rect2(336, 0, 48, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_l7y27"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_16r6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knhsb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f32sa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8o6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxj11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnosm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxb7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba5el")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"default",
-"speed": 5.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_16r6p"]
 radius = 38.00329
 
+[sub_resource type="Gradient" id="Gradient_16r6p"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_g4v7s"]
+gradient = SubResource("Gradient_16r6p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="Coffin" type="Area2D" unique_id=411139926]
-z_index = -1
+z_index = 1
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_16r6p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1768391468]
+position = Vector2(-14, -21)
 sprite_frames = SubResource("SpriteFrames_l7y27")
+centered = false
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=835165990]
-position = Vector2(0, 0.5)
 shape = SubResource("CircleShape2D_16r6p")
+metadata/_edit_lock_ = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1996678156]
+texture = SubResource("GradientTexture2D_g4v7s")

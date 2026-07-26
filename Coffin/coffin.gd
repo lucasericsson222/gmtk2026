@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var death: Sprite2D
+@export var safe: Sprite2D
 var target: CharacterBody2D = null
 var start_position: Vector2
 var t = 0
@@ -12,12 +14,16 @@ func _on_body_entered(body):
 	start_position = target.position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if target:
 		target.velocity = Vector2.ZERO
 		t += 1
 		
 		target.position = lerp(start_position, position, min(0.01 * t, 1))
-		if (target.position - position).length() < 10:
+		if (target.position - position).length() < 5:
 			target.queue_free()
+			$AnimatedSprite2D.play()
 			target = null
+			$PointLight2D.enabled = false
+			death.visible = false
+			safe.visible = true
