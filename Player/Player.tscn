@@ -365,7 +365,7 @@ states/start_jump/position = Vector2(336.8, 259)
 states/walk/node = SubResource("AnimationNodeAnimation_8sa4y")
 states/walk/position = Vector2(509, 74)
 transitions = ["stand", "walk", SubResource("AnimationNodeStateMachineTransition_3nb2p"), "Start", "stand", SubResource("AnimationNodeStateMachineTransition_3mea3"), "walk", "stand", SubResource("AnimationNodeStateMachineTransition_7v5gs"), "stand", "start_jump", SubResource("AnimationNodeStateMachineTransition_d7xyo"), "walk", "start_jump", SubResource("AnimationNodeStateMachineTransition_evw08"), "start_jump", "jump", SubResource("AnimationNodeStateMachineTransition_8sa4y"), "land", "stand", SubResource("AnimationNodeStateMachineTransition_u5tep"), "jump", "start_fall", SubResource("AnimationNodeStateMachineTransition_dm7nj"), "start_fall", "fall", SubResource("AnimationNodeStateMachineTransition_roy6y"), "walk", "start_fall", SubResource("AnimationNodeStateMachineTransition_7uipr"), "jump", "stand", SubResource("AnimationNodeStateMachineTransition_j23h2"), "fall", "slide", SubResource("AnimationNodeStateMachineTransition_yifbt"), "slide", "start_jump", SubResource("AnimationNodeStateMachineTransition_0j2ni"), "fall", "land", SubResource("AnimationNodeStateMachineTransition_ps8ct"), "start_fall", "land", SubResource("AnimationNodeStateMachineTransition_v0k0e"), "slide", "land", SubResource("AnimationNodeStateMachineTransition_5wa8t"), "start_jump", "start_fall", SubResource("AnimationNodeStateMachineTransition_p7tob")]
-graph_offset = Vector2(-79.83081, -203.00208)
+graph_offset = Vector2(-101.83081, -280.00208)
 
 [node name="Player" type="CharacterBody2D" unique_id=106055133]
 script = ExtResource("1_q3lat")
@@ -452,7 +452,7 @@ vframes = 3
 frame = 1
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=563331738]
-collision_layer = 0
+collision_layer = 128
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=8102550]

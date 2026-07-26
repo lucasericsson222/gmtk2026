@@ -15,8 +15,17 @@ func _ready() -> void:
 	$Area2D.area_entered.connect(_body_entered)
 	$RopeArea.area_entered.connect(_rope_flame_entered)
 	
-func _body_entered(area):
-	queue_free()
+func _body_entered(area: Area2D):
+	if area.get_collision_layer_value(8):
+		match randi_range(1, 3):
+			1:
+				AudioManager.play_sfx(AudioManager.SoundEffects.CHANDELIER)
+			2:
+				AudioManager.play_sfx(AudioManager.SoundEffects.CHANDELIER2)
+			3:
+				AudioManager.play_sfx(AudioManager.SoundEffects.CHANDELIER3)
+	else:
+		queue_free()
 	
 func _rope_flame_entered(area):
 	$RopeArea.queue_free()

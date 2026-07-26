@@ -5,7 +5,8 @@
 [node name="AudioManager" type="Node" unique_id=1445452390]
 script = ExtResource("1_jisk1")
 
-[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1851843380]
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2035081436]
+volume_db = -3.0
 
 [node name="SFXStreams" type="Node" parent="." unique_id=747330507]
 
