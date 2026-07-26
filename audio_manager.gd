@@ -42,3 +42,6 @@ func play_song(song: Songs):
 	$Music.stop()
 	$Music.stream = SONG_RESOURCES[song]
 	$Music.play()
+
+func set_music_volume(db: float):
+	$Music.volume_db = db
